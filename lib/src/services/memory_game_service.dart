@@ -76,27 +76,22 @@ class MemoryGameService with ChangeNotifier {
   }
 
   void flipCard(int index) {
-
-
     ImageCardModel imageCard = imagesCard[index];
 
     if (!imageCard.isGuessed) {
       imagesCard[index].flipCard();
       imagesCard[index].cardKey.currentState.toggleCard();
-         notifyListeners();
+      notifyListeners();
     }
 
-        if (_isThereAnyMatch()) {
+    if (_isThereAnyMatch()) {
       _markAllFlippedCardsAsGuessed();
     } else {
       _flipAllCards();
     }
-
-
-
   }
 
-  checkGame(){
+  checkGame() {
     if (_isThereAnyMatch()) {
       _markAllFlippedCardsAsGuessed();
     } else {
@@ -121,7 +116,7 @@ class MemoryGameService with ChangeNotifier {
     if (matches.length == 2) {
       matches.forEach((element) async {
         element.flipCard();
-              await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(Duration(seconds: 1));
         element.cardKey.currentState.toggleCard();
       });
     }
@@ -131,12 +126,14 @@ class MemoryGameService with ChangeNotifier {
     return imagesCard.every((element) => element.isGuessed);
   }
 
-  void resetGame(){
-
+  void resetGame() {
     for (var i = 0; i < imagesCard.length; i++) {
-      imagesCard[i].resetCard();
-       imagesCard[i].cardKey.currentState.toggleCard();
-    }
+      ImageCardModel card = imagesCard[i];
 
+      if (card.isFlipped) {
+        card.resetCard();
+        card.cardKey.currentState.toggleCard();
+      }
+    }
   }
 }

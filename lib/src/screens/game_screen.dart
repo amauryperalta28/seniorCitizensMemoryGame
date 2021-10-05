@@ -15,8 +15,17 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Game'),
-        automaticallyImplyLeading:  false,
+        automaticallyImplyLeading: false,
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            color: Colors.white,
+            onPressed: () {
+              showSettingDialog(context);
+            },
+          )
+        ],
       ),
       body: Container(
         margin: EdgeInsets.symmetric(vertical: 25.0),
@@ -77,6 +86,27 @@ class GameScreen extends StatelessWidget {
                 },
                 child: Text('Volver'),
               )
+            ],
+          );
+        });
+  }
+
+  void showSettingDialog(BuildContext context) {
+    final provider = Provider.of<MemoryGameService>(context, listen: false);
+
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Memory Game'),
+            content: Text('Quieres reiniciar el juego?'),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    provider.resetGame();
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Reiniciar')),
             ],
           );
         });
