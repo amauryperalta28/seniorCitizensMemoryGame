@@ -76,11 +76,12 @@ class GameScreen extends StatelessWidget {
             content: Text('Se acabo el juego!!!! Eres excelente!!'),
             actions: <Widget>[
               TextButton(
-                  onPressed: () {
-                    provider.resetGame();
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('Reiniciar')),
+                onPressed: () {
+                  provider.resetGame();
+                  Navigator.of(context).pop();
+                },
+                child: Text('Reiniciar'),
+              ),
               TextButton(
                 onPressed: () {
                   provider.resetGame();
@@ -110,6 +111,14 @@ class GameScreen extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   child: Text('Reiniciar')),
+              TextButton(
+                onPressed: () {
+                  provider.resetGame();
+                  Navigator.popUntil(
+                      context, ModalRoute.withName(HomeScreen.routeName));
+                },
+                child: Text('Salir'),
+              )
             ],
           );
         });
