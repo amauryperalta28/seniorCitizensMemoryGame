@@ -7,14 +7,16 @@ import 'package:senior_citizens_memory_games/src/services/memory_game_service.da
 
 class GameScreen extends StatelessWidget {
   static String routeName = '/game';
+  ThemeData theme;
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<MemoryGameService>(context);
+    theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Game'),
+        title: Text('Memory Game'),
         automaticallyImplyLeading: false,
         centerTitle: true,
         actions: [
@@ -80,7 +82,10 @@ class GameScreen extends StatelessWidget {
                   provider.resetGame();
                   Navigator.of(context).pop();
                 },
-                child: Text('Reiniciar'),
+                child: Text(
+                  'Reiniciar',
+                  style: TextStyle(color: theme.primaryColor),
+                ),
               ),
               TextButton(
                 onPressed: () {
@@ -88,7 +93,8 @@ class GameScreen extends StatelessWidget {
                   Navigator.popUntil(
                       context, ModalRoute.withName(HomeScreen.routeName));
                 },
-                child: Text('Volver'),
+                child:
+                    Text('Volver', style: TextStyle(color: theme.primaryColor)),
               )
             ],
           );
@@ -103,21 +109,23 @@ class GameScreen extends StatelessWidget {
         builder: (context) {
           return AlertDialog(
             title: Text('Memory Game'),
-            content: Text('Quieres reiniciar el juego?'),
+            content: Text('¿Quieres reiniciar el juego?'),
             actions: <Widget>[
               TextButton(
                   onPressed: () {
                     provider.resetGame();
                     Navigator.of(context).pop();
                   },
-                  child: Text('Reiniciar')),
+                  child: Text('Reiniciar',
+                      style: TextStyle(color: theme.primaryColor))),
               TextButton(
                 onPressed: () {
                   provider.resetGame();
                   Navigator.popUntil(
                       context, ModalRoute.withName(HomeScreen.routeName));
                 },
-                child: Text('Salir'),
+                child:
+                    Text('Salir', style: TextStyle(color: theme.primaryColor)),
               )
             ],
           );

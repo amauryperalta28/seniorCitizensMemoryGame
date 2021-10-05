@@ -3,11 +3,15 @@ import 'package:senior_citizens_memory_games/src/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routeName = '/home';
+
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Memory Games for the old.'),
+        centerTitle: true,
       ),
       body: Container(
         width: double.infinity,
@@ -26,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.center,
               ),
               textColor: Colors.white,
-              color: Colors.blue.shade800,
+              color: theme.primaryColor,
               onPressed: () {
                 Navigator.of(context).pushNamed(GameScreen.routeName);
               },
