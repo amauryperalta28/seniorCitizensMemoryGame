@@ -29,15 +29,15 @@ class GameScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: 25.0),
+        margin: EdgeInsets.symmetric(vertical: 30.0),
         child: GridView.count(
-          mainAxisSpacing: 30,
+          mainAxisSpacing: 35,
           crossAxisCount: 4,
           children: List.generate(provider.imagesCard.length, (index) {
             return GestureDetector(
               onTap: () {
                 provider.flipCard(index);
-                
+
                 provider.checkGame();
 
                 if (provider.didTheGameFinish()) {
