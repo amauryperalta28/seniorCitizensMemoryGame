@@ -7,6 +7,10 @@ class MemoryGameService with ChangeNotifier {
   List<ImageCardModel> imagesCard;
 
   MemoryGameService() {
+    _initializeCards();
+  }
+
+  void _initializeCards() {
     imagesCard = [];
     imagesCard.add(new ImageCardModel(
         1, Assets.babosaPath, false, false, GlobalKey<FlipCardState>()));
@@ -83,15 +87,9 @@ class MemoryGameService with ChangeNotifier {
       imagesCard[index].cardKey.currentState.toggleCard();
       notifyListeners();
     }
-
-    if (_isThereAnyMatch()) {
-      _markAllFlippedCardsAsGuessed();
-    } else {
-      _flipAllCards();
-    }
   }
 
-  checkGame() {
+  void checkGame() {
     if (_isThereAnyMatch()) {
       _markAllFlippedCardsAsGuessed();
     } else {

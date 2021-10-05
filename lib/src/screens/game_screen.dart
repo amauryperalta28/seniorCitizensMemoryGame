@@ -19,10 +19,11 @@ class GameScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
+            padding: EdgeInsets.only(right: 20),
             icon: Icon(Icons.settings),
             color: Colors.white,
             onPressed: () {
-              showSettingDialog(context);
+              showResetGameDialog(context);
             },
           )
         ],
@@ -36,6 +37,8 @@ class GameScreen extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 provider.flipCard(index);
+                
+                provider.checkGame();
 
                 if (provider.didTheGameFinish()) {
                   print('Se acabo el juego');
@@ -91,7 +94,7 @@ class GameScreen extends StatelessWidget {
         });
   }
 
-  void showSettingDialog(BuildContext context) {
+  void showResetGameDialog(BuildContext context) {
     final provider = Provider.of<MemoryGameService>(context, listen: false);
 
     showDialog(

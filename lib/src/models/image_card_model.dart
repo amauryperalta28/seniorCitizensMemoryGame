@@ -7,7 +7,7 @@ class ImageCardModel {
   bool _isFlipped;
   bool _isGuessed;
   GlobalKey<FlipCardState> _cardKey;
-  
+
   get id {
     return _id;
   }
@@ -28,18 +28,19 @@ class ImageCardModel {
     return _cardKey;
   }
 
-  flipCard(){
+  ImageCardModel(this._id, this._routePath, this._isFlipped, this._isGuessed,
+      this._cardKey);
+
+  flipCard() {
     _isFlipped = !_isFlipped;
   }
 
-  markAsGuessed(){
+  markAsGuessed() {
     _isGuessed = true;
   }
 
-  resetCard(){
+  resetCard() {
     _isFlipped = false;
     _isGuessed = false;
   }
-
-  ImageCardModel(this._id, this._routePath, this._isFlipped, this._isGuessed, this._cardKey);
 }
