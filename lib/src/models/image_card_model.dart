@@ -36,5 +36,10 @@ class ImageCardModel {
     _isGuessed = true;
   }
 
+  resetCard(){
+    _isFlipped = false;
+    _isGuessed = false;
+  }
+
   ImageCardModel(this._id, this._routePath, this._isFlipped, this._isGuessed, this._cardKey);
 }

@@ -8,4 +8,5 @@ class Assets{
   static String monoPath = "assets/images/mono.png";
   static String patoPath = "assets/images/pato.png";
   static String pulpoPath = "assets/images/pulpo.png";
+  static String cardBackPath = "assets/images/back-card.jpg";
 }

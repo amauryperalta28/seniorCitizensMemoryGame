@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.center,
               ),
               textColor: Colors.white,
-              color: Colors.blue.shade700,
+              color: Colors.blue.shade800,
               onPressed: () {
                 Navigator.of(context).pushNamed(GameScreen.routeName);
               },

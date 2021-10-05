@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           GameScreen.routeName: (context) => new GameScreen(),
         },
         theme: ThemeData.light().copyWith(
-          primaryColor: Colors.blue.shade700,
+          primaryColor: Colors.blue.shade800,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.blue.shade700,
           ),
